@@ -1,21 +1,26 @@
 import Link from "next/link";
 
-import { categories, products } from "../../data/mockData";
+import { categories, product } from "../../data/mockData";
 import LandingHeroSectionComponent from "../../components/landing/LandingHeroSectionComponent";
 import LandingBestSellerSectionComponent from "../../components/landing/LandingBestSellerSectionComponent";
 import LandingEssentialComponent from "../../components/landing/LandingEssentialComponent";
 
-const bestSellers = products.slice(0, 4);
-const heroStrip = products.slice(0, 3);
+const bestSellers = product.slice(0, 4);
+const heroStrip = product.slice(0, 3);
 
 export default function Home() {
   return (
     <div className="bg-[#fafafa]">
+      {/* hero section */}
       <LandingHeroSectionComponent miniProducts={heroStrip} />
+      {/* best selling product */}
       <LandingBestSellerSectionComponent items={bestSellers} />
+
+      {/* essential product */}
+      {/* fetched from api */}
       <LandingEssentialComponent />
 
-      <section className="mx-auto w-full max-w-7xl py-16 lg:py-20">
+      <section className="mx-auto w-full max-w-7xl py-16 lg:py-20 px-[120px]">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
             <p className="text-4xl font-semibold tabular-nums text-gray-900 lg:text-5xl">1,200+</p>
@@ -41,7 +46,7 @@ export default function Home() {
           <h2 className="text-center text-3xl font-semibold text-gray-900 sm:text-4xl">
             What makes us different
           </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 px-[120px]">
             {[
               { t: "100% transparent", d: "Mock data only — no hidden APIs in this classroom build." },
               { t: "Cruelty-free UX", d: "Clear buttons, readable type, and calm spacing by default." },

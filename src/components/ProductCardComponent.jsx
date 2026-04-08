@@ -6,18 +6,23 @@ import ButtonAddComponent from "./ButtonAddComponent";
 
 export function StarRow({ rating = 4.8 }) {
   return (
-    <p className="flex items-center gap-0.5 text-amber-400" aria-label={`${rating} stars`}>
+    <p
+      className="flex items-center gap-0.5 text-amber-400"
+      aria-label={`${rating} stars`}
+    >
       <span className="text-sm">★★★★★</span>
       <span className="ml-1 text-xs tabular-nums text-gray-500">{rating}</span>
     </p>
   );
 }
 
-export default function ProductCardComponent({ product }) {
-  const { productId, productName, price, imageUrl } = product;
+export default function ProductCardComponent({ product, add }) {
+  const { productId, name, price, imageUrl } = product;
+  // const items = useCartStore((state) => state.items);
 
   return (
     <article className="group relative rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
+      {/* <span>{items.length}</span> */}
       <Link href={`/products/${productId}`} className="block">
         <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
           {imageUrl ? (
@@ -37,15 +42,18 @@ export default function ProductCardComponent({ product }) {
       </Link>
       <div className="relative mt-4 pr-14">
         <StarRow />
-        <Link href={`/products/${productId}`}>
+
+        <Link href="./carts">
           <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-gray-900 hover:text-lime-700">
-            {productName}
+            {name}
           </h3>
         </Link>
-        <p className="mt-2 text-base font-semibold tabular-nums text-gray-900">${price}</p>
+        <p className="mt-2 text-base font-semibold tabular-nums text-gray-900">
+          ${price}
+        </p>
       </div>
       <div className="absolute bottom-4 right-4">
-        <ButtonAddComponent productId={productId} />
+        <ButtonAddComponent product={product} />
       </div>
     </article>
   );

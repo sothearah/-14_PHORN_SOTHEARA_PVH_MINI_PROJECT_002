@@ -5,7 +5,7 @@ import ButtonComponent from "./ButtonComponent";
 export default async function FooterComponent() {
   // const session = await auth();
   return (
-    <footer id="contact" className="mt-auto border-t border-gray-200 bg-white">
+    <footer id="contact" className="mt-auto border-t border-gray-200 bg-white px-[120px]">
       <div className="mx-auto w-full max-w-7xl py-12 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>

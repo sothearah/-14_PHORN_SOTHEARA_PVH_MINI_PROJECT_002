@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function LandingHeroSectionComponent({ miniProducts }) {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white px-[120px]">
       <div className="mx-auto grid w-full max-w-7xl gap-10 py-14 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-20">
         <div className="max-w-xl">
           <p className="text-sm font-medium uppercase tracking-widest text-lime-600">Natural skincare</p>
