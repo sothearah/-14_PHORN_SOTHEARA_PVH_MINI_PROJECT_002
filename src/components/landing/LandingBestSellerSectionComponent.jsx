@@ -1,10 +1,8 @@
-
 import React from "react";
 import ProductCardComponent from "../ProductCardComponent";
 
-
 export default async function LandingBestSellerSectionComponent({ items }) {
-
+  // fetching on server
   // const res = await fetch("https://homework-api.noevchanmakara.site/api/v1/products/top-selling", {
   //           method: "GET",
   //           headers: {
@@ -13,11 +11,10 @@ export default async function LandingBestSellerSectionComponent({ items }) {
   //           },
   //         },)
   // const result = await res.json()
-  // console.log(result)
-
+  // console.log("Top Selling Data:", result.payload[0]);
 
   // const products = result.payload || [];
-
+  
 
   return (
     <section className="mx-auto w-full max-w-7xl py-16 lg:py-20 px-[120px]">
@@ -32,9 +29,10 @@ export default async function LandingBestSellerSectionComponent({ items }) {
         </div>
       </div>
       <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-6">
-        {/* {products.map((product, index) => (
-          <ProductCardComponent product={product} key={product.productId} />
-        ))} */}
+        {/* render on website */}
+        {items.map((product, index) => (
+          <ProductCardComponent product={product} key={index} />
+        ))}
       </div>
     </section>
   );

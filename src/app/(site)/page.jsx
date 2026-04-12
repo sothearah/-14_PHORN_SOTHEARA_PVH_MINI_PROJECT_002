@@ -4,21 +4,26 @@ import { categories, product } from "../../data/mockData";
 import LandingHeroSectionComponent from "../../components/landing/LandingHeroSectionComponent";
 import LandingBestSellerSectionComponent from "../../components/landing/LandingBestSellerSectionComponent";
 import LandingEssentialComponent from "../../components/landing/LandingEssentialComponent";
+import getAllProducts from "../../service/product.service";
 
 const bestSellers = product.slice(0, 4);
 const heroStrip = product.slice(0, 3);
 
-export default function Home() {
+export default async function Home() {
+
+  const products = await getAllProducts();
+
   return (
     <div className="bg-[#fafafa]">
       {/* hero section */}
       <LandingHeroSectionComponent miniProducts={heroStrip} />
+
       {/* best selling product */}
       <LandingBestSellerSectionComponent items={bestSellers} />
 
       {/* essential product */}
-      {/* fetched from api */}
-      <LandingEssentialComponent />
+      <p>gege</p>
+      <LandingEssentialComponent getProduct={products} />
 
       <section className="mx-auto w-full max-w-7xl py-16 lg:py-20 px-[120px]">
         <div className="grid gap-4 md:grid-cols-3">

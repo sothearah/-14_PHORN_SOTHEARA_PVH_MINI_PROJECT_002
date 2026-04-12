@@ -16,12 +16,35 @@ function badgeClass(label) {
 const btnClass =
   "mt-2 block w-full rounded-xl border border-gray-900 bg-gray-900 py-2.5 text-center text-sm font-medium text-white transition hover:bg-gray-800";
 
-export default function ShopCardComponent() {
+export default async function ShopCardComponent() {
+  // fetch data on server side
+  // const res = await fetch(
+  //   "https://homework-api.noevchanmakara.site/api/v1/products",
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+  //             "Content-Type": "application/json",
+  //           },
+  //         },
+  // );
+
+  // if (!res.ok) {
+  //   console.error(`Fetch failed with status: ${res.status}`);
+  //   return <p>Error loading products.</p>;
+  // }
+  // const result = await res.json();
+  // console.log("API Result Shape:", result);
+  // const products = result?.payload || [];
+  // const DISPLAY_LIMIT = 3;
+
   return (
     <article className="group max-w-[300px] flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="relative aspect-square overflow-hidden">
         <Image
-          src={"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=1000&fit=crop"}
+          src={
+            "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=1000&fit=crop"
+          }
           alt="image"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -54,4 +77,44 @@ export default function ShopCardComponent() {
       </div>
     </article>
   );
+}
+
+{
+  /* <article className="group max-w-[300px] flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="relative aspect-square overflow-hidden">
+          <Image
+            src={
+              "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=1000&fit=crop"
+            }
+            alt="image"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className={`object-cover`}
+          />
+        </div>
+        <div className="flex flex-1 flex-col gap-3 p-5">
+          <div>
+            <h3 className="font-semibold leading-snug text-gray-900">
+              Hydra Glow Moisturizer
+            </h3>
+            <p className="mt-1 min-h-10 line-clamp-2 text-sm leading-5 text-gray-500">
+              24-hour hydration with hyaluronic acid and ceramides.
+            </p>
+          </div>
+          <StarRow />
+          <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-2">
+            <p className="text-xl font-semibold tabular-nums text-gray-900">
+              $62
+            </p>
+            <span
+              className={`rounded-full px-2.5 py-1 text-xs font-medium ${badgeClass("Skincare")}`}
+            >
+              Skincare
+            </span>
+          </div>
+          <Link href={``} className={`${btnClass}`}>
+            View Product
+          </Link>
+        </div>
+      </article> */
 }

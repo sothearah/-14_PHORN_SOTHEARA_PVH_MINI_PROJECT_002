@@ -16,19 +16,21 @@ export function StarRow({ rating = 4.8 }) {
   );
 }
 
+
 export default function ProductCardComponent({ product, add }) {
-  const { productId, name, price, imageUrl } = product;
-  // const items = useCartStore((state) => state.items);
+  const { productId, productName, price, imageUrl, star } = product;
+
+  
 
   return (
     <article className="group relative rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
-      {/* <span>{items.length}</span> */}
       <Link href={`/products/${productId}`} className="block">
         <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
           {imageUrl ? (
+            
             <Image
               src={imageUrl}
-              alt=""
+              alt={"Product"}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition group-hover:scale-[1.02]"
@@ -41,11 +43,12 @@ export default function ProductCardComponent({ product, add }) {
         </div>
       </Link>
       <div className="relative mt-4 pr-14">
-        <StarRow />
+        <StarRow rating={star || 5} />
+
 
         <Link href="./carts">
           <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-gray-900 hover:text-lime-700">
-            {name}
+            {productName}
           </h3>
         </Link>
         <p className="mt-2 text-base font-semibold tabular-nums text-gray-900">

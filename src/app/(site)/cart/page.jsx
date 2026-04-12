@@ -44,7 +44,6 @@ export default function CartPage() {
             key={item.productId}
             className="flex items-center gap-4 bg-white rounded-2xl border border-gray-200 p-4"
           >
-            {/* Product Image */}
             <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
               {item.imageUrl ? (
                 <Image
@@ -54,7 +53,7 @@ export default function CartPage() {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-300 text-2xl">
-                  ◇
+                  
                 </div>
               )}
             </div>
