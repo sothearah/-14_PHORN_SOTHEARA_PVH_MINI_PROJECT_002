@@ -2,20 +2,6 @@ import React from "react";
 import ProductCardComponent from "../ProductCardComponent";
 
 export default async function LandingBestSellerSectionComponent({ items }) {
-  // fetching on server
-  // const res = await fetch("https://homework-api.noevchanmakara.site/api/v1/products/top-selling", {
-  //           method: "GET",
-  //           headers: {
-  //             Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
-  //             "Content-Type": "application/json",
-  //           },
-  //         },)
-  // const result = await res.json()
-  // console.log("Top Selling Data:", result.payload[0]);
-
-  // const products = result.payload || [];
-  
-
   return (
     <section className="mx-auto w-full max-w-7xl py-16 lg:py-20 px-[120px]">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between px-[120px]">

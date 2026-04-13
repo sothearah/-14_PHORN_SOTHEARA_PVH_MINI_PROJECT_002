@@ -14,9 +14,6 @@ const PAGE_SIZE = 6;
 export default function LandingEssentialsGrid({ getProduct }) {
   
   const [cartItems, setCartItems] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
   const [tab, setTab] = useState("All");
   const [showAll, setShowAll] = useState(false);
 
@@ -35,37 +32,6 @@ export default function LandingEssentialsGrid({ getProduct }) {
     });
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(
-  //         "https://homework-api.noevchanmakara.site/api/v1/products",
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
-  //             "Content-Type": "application/json",
-  //           },
-  //         },
-  //       );
-
-  //       console.log("Response Status:", res.status);
-
-  //       const result = await res.json();
-  //       console.log("API Response:", result);
-
-  //       setProducts(result.payload || []);
-  //     } catch (err) {
-  //       setError(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // if (loading) return <div>is loading..</div>;
-
   const filtered = filterProductsByEssentialsTab(getProduct, tab);
   console.log("Filtered Products for this Tab:", filtered.length);
   const visible = showAll ? filtered : filtered.slice(0, PAGE_SIZE) || []; //fallback to make sure it always array
@@ -77,7 +43,6 @@ export default function LandingEssentialsGrid({ getProduct }) {
       className="mx-auto w-full max-w-7xl py-16 lg:py-20 px-[120px]"
     >
       <div className="flex flex-col items-center text-center px-[120px]">
-        <p>show me here</p>
         <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
           Our skincare essentials
         </h2>
@@ -118,21 +83,13 @@ export default function LandingEssentialsGrid({ getProduct }) {
 
       <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
         {visible.map((product, index) => (
-          // <ProductCardComponent
-          //   add={handleAddToCart}
-          //   product={product}
-          //   key={product.productId}
-          //   // key={index}
-          // />
           <ProductCardComponent
             add={handleAddToCart}
-            key={item.productId}
-            product={item}
+            product={product}
+            key={product.productId}
           />
         ))}
       </div>
-      
-      
 
       {filtered.length === 0 && (
         <p className="mt-12 text-center text-gray-500">

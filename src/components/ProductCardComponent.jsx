@@ -18,7 +18,7 @@ export function StarRow({ rating = 4.8 }) {
 
 
 export default function ProductCardComponent({ product, add }) {
-  const { productId, productName, price, imageUrl, star } = product;
+  const { productId, name, price, imageUrl, star } = product;
 
   
 
@@ -46,9 +46,9 @@ export default function ProductCardComponent({ product, add }) {
         <StarRow rating={star || 5} />
 
 
-        <Link href="./carts">
+        <Link href={`/products/${productId}`}>
           <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-gray-900 hover:text-lime-700">
-            {productName}
+            {name}
           </h3>
         </Link>
         <p className="mt-2 text-base font-semibold tabular-nums text-gray-900">

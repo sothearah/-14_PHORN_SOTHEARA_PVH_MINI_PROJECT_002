@@ -1,42 +1,37 @@
 "use client";
 
-import { Button, Form, Radio, RadioGroup } from "@heroui/react";
-import React from "react";
+import { useState } from "react";
 
-export default function Validation() {
-  const [message, setMessage] = React.useState(null);
+export default function RadioBox({ categories = [], onSelect }) {
+  const [selected, setSelected] = useState([]);
+
+  const toggle = (id) => {
+    const updated = selected.includes(id)
+      ? selected.filter((c) => c !== id)
+      : [...selected, id];
+    setSelected(updated);
+    onSelect(updated);
+  };
 
   return (
-    <Form
-      className="flex flex-col gap-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.currentTarget);
-        const value = formData.get("plan-validation");
-
-        setMessage(`Your chosen plan is: ${value}`);
-      }}
-    >
-      <RadioGroup
-        isRequired
-        name="plan-validation"
-        // label="Subscription plan" // Replacement for <Label>
-        errorMessage="Choose a subscription before continuing." // Replacement for <FieldError>
-      >
-        <Radio 
-          value="teams" 
-          description=""
-        >
-          Teams
-        </Radio>
-      </RadioGroup>
-
-      <Button className="rounded-2xl bg-white border border-gray-300 px-4 py-1  text-gray-800 hover:bg-gray-200 transition">
-        Choose
-      </Button>
-      
-      {message && <p className="text-sm text-default-500">{message}</p>}
-    </Form>
+    <div className="flex flex-col gap-2">
+      {categories.map((cat) => (
+        <label key={cat.categoryId} className="flex items-center justify-between gap-2 cursor-pointer">
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={selected.includes(cat.categoryId)}
+              onChange={() => toggle(cat.categoryId)}
+              className="rounded"
+            />
+            <span className="text-sm text-gray-700">{cat.name}</span> {/* ✅ real name */}
+          </div>
+        </label>
+      ))}
+      {categories.length === 0 && (
+        <p className="text-xs text-gray-400">No categories found.</p>
+      )}
+      <p className="text-xs text-gray-400 mt-1">Select none to include all categories.</p>
+    </div>
   );
 }
