@@ -20,8 +20,6 @@ export function StarRow({ rating = 4.8 }) {
 export default function ProductCardComponent({ product, add }) {
   const { productId, name, price, imageUrl, star } = product;
 
-  
-
   return (
     <article className="group relative rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
       <Link href={`/products/${productId}`} className="block">
