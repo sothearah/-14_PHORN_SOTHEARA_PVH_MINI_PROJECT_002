@@ -50,13 +50,6 @@ export default function ProductsClientWrapper({ products, categories }) {
 
       </div>
 
-      {/* showing count */}
-      <div className="px-[200px] mb-4">
-        <p className="text-sm text-gray-500">
-          Showing <span className="font-semibold">{filtered.length}</span> products
-        </p>
-      </div>
-
       {/* filter + card */}
       <div className="flex items-center justify-center gap-4 flex-col">
         <div className="flex items-start justify-center gap-4">

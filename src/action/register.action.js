@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 export async function registerAction(data) {
   try {
-    const result = await registerService(data.name, data.email, data.password);
+    const result = await registerService(data.fullName, data.email, data.password);
     console.log("Register response:", result);
 
     if (!result.success) {
